@@ -16,7 +16,7 @@ if (strlen($_SESSION['cmsaid']==0)) {
     <head>
 
         <!-- App title -->
-        <title>Mkombe Parcel Sales Report</title>
+        <title>CMS Sales Report</title>
 
         <!-- Switchery css -->
         <link href="../plugins/switchery/switchery.min.css" rel="stylesheet" />

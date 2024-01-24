@@ -13,7 +13,7 @@ if (strlen($_SESSION['cmsaid']==0)) {
 <html lang="en">
 
     <head>
-        <title>Mkombe Parcel Sales Report</title>
+        <title>Sales Report</title>
 
         <!-- DataTables -->
         <link href="../plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
@@ -44,104 +44,133 @@ if (strlen($_SESSION['cmsaid']==0)) {
        
  <?php include_once('includes/header.php');?>
            <?php include_once('includes/leftbar.php');?>
-<div class="content-page">
-                <!-- Start content -->
-                <div class="content">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="card-box">
-                                    <h4 class="m-t-0 header-title">Sales Report</h4>
+           
+           <div class="content-page">
+    <!-- Start content -->
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card-box">
+                        <h4 class="m-t-0 header-title">Sales Report</h4>
+                        <?php
+                        $fdate = $_POST['fromdate'];
+                        $tdate = $_POST['todate'];
+                        $rtype = $_POST['requesttype'];
+                        ?>
+                        <h5 align="center" style="color:blue">Sales Report from <?php echo $fdate ?> to <?php echo $tdate ?></h5>
+                        <hr />
+                        <?php if ($rtype == "dtwise") { ?>
+                            <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                <thead>
+                                    <tr>
+                                        <th>S.NO</th>
+                                        <th>Date</th>
+                                        <th>TZS Amount</th>
+                                        <th>S.A Amount</th>
+                                    </tr>
+                                </thead>
+                                <?php
+                                $ret = mysqli_query($con, "select date(CourierDate) as cdate,sum(TZSrice) as TZSsum,sum(ZARrice) as ZARsum from tblcourier where CourierDate between '$fdate' and '$tdate' group by cdate");
+                                $cnt = 1;
+                                while ($row = mysqli_fetch_array($ret)) {
+                                ?>
+                                    <tr>
+                                        <td><?php echo $cnt; ?></td>
+                                        <td><?php echo $row['cdate']; ?></td>
+                                        <td><?php echo $ttlsl = $row['TZSsum']; ?></td>
+                                        <td><?php echo $ttlsl = $row['ZARsum']; ?></td>
+                                    </tr>
                                     <?php
-$fdate=$_POST['fromdate'];
-$tdate=$_POST['todate'];
-$rtype=$_POST['requesttype'];
-?>
-<h5 align="center" style="color:blue">Sales Report from <?php echo $fdate?> to <?php echo $tdate?></h5>
-<hr />
-<?php if($rtype=="dtwise"){?>
-                                    <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                                        <thead>
-                                        <tr>
-                                            <tr>
-              <th>S.NO</th>
-              <th>Date</th>
-              <th>Sale Amount</th>
-                </tr>
-                                        </tr>
-                                        </thead>
- <?php
-$ret=mysqli_query($con,"select date(CourierDate) as cdate,sum(ParcelPrice) as totalsum from tblcourier where CourierDate between '$fdate' and '$tdate' group by cdate");
-$cnt=1;
-while ($row=mysqli_fetch_array($ret)) {
-
-?>
-              
-                <tr>
-                  <td><?php echo $cnt;?></td>
-            
-                  <td><?php  echo $row['cdate'];?></td>
-                  <td><?php  echo $ttlsl=$row['totalsum'];?></td>
-           
-           
-                </tr>
-                <?php
-                $totalsales+=$ttlsl; 
-$cnt=$cnt+1;
-}?>
-
- <tr>
-  <th colspan="2" style="text-align:center">Grand Total</th>     
-  <td><?php echo $totalsales;?></td>
- </tr>     
-
-                                    </table>
-
-<?php } elseif($rtype=="mtwise"){ ?>
-
-     <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                                        <thead>
-                                        <tr>
-                                            <tr>
-              <th>S.NO</th>
-              <th>Date</th>
-              <th>Sale Amount</th>
-                </tr>
-                                        </tr>
-                                        </thead>
- <?php
-$ret=mysqli_query($con,"select month(CourierDate) as rmonth,year(CourierDate) as ryear,sum(ParcelPrice) as totalsum from tblcourier where CourierDate between '$fdate' and '$tdate' group by rmonth,ryear");
-$cnt=1;
-while ($row=mysqli_fetch_array($ret)) {
-
-?>
-              
-                <tr>
-                  <td><?php echo $cnt;?></td>
-            
-                  <td><?php  echo $row['rmonth']."-".$row['ryear'];?></td>
-                  <td><?php  echo $ttlsl=$row['totalsum'];?></td>
-           
-           
-                </tr>
-                <?php 
-      $totalsales+=$ttlsl;                
-$cnt=$cnt+1;
-}?>
-<tr>
-  <th colspan="2" style="text-align:center">Grand Total</th>   
-  <td><?php echo $totalsales;?></td>
- </tr>
-                                        
-                                    </table>
-                                    <?php } ?>                                
-                                </div>
+                                    $totalsales += $ttlsl;
+                                    $cnt = $cnt + 1;
+                                }
+                                    ?>
+                                <tr>
+                                    <th colspan="2" style="text-align:center">Total Amount</th>
+                                    <td><?php echo $totalsales; ?></td>
+                                </tr>
+                            </table>
+                            <!-- Add export buttons -->
+                            <div style="text-align: center; margin-top: 20px;">
+                                <button onclick="exportToExcel('datatable', 'sales_report')">Export to Excel</button>
+                                <button onclick="exportToPdf('datatable', 'sales_report')">Export to PDF</button>
                             </div>
-                        </div> <!-- end row -->
-
-
-</div></div>
+                        <?php } elseif ($rtype == "mtwise") { ?>
+                            <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                <thead>
+                                    <tr>
+                                        <th>S.NO</th>
+                                        <th>Date</th>
+                                        <th>TZS Amount</th>
+                                        <th>S.A Amount</th>
+                                    </tr>
+                                </thead>
+                                <?php
+                                $ret = mysqli_query($con, "select month(CourierDate) as rmonth,year(CourierDate) as ryear,sum(TZSprice) as TZSsum,sum(ZARprice) as ZARsum from tblcourier where CourierDate between '$fdate' and '$tdate' group by rmonth,ryear");
+                                $cnt = 1;
+                                while ($row = mysqli_fetch_array($ret)) {
+                                ?>
+                                    <tr>
+                                        <td><?php echo $cnt; ?></td>
+                                        <td><?php echo $row['rmonth'] . "-" . $row['ryear']; ?></td>
+                                        <td><?php echo $ttlsl = $row['TZSsum']; ?></td>
+                                        <td><?php echo $ttlsl = $row['ZARsum']; ?></td>
+                                    </tr>
+                                    <?php
+                                    $totalsales += $ttlsl;
+                                    $cnt = $cnt + 1;
+                                }
+                                    ?>
+                                <tr>
+                                    <th colspan="2" style="text-align:center">Total income</th>
+                                    <td><?php echo $totalsales; ?></td>
+                                </tr>
+                            </table>
+                            <!-- Add export buttons -->
+                            <div style="text-align: center; margin-top: 20px;">
+                                <button onclick="exportToExcel('datatable', 'sales_report')">Export to Excel</button>
+                                <button onclick="exportToPdf('datatable', 'sales_report')">Export to PDF</button>
+                            </div>
+                        <?php } ?>
+                    </div>
+                </div>
+            </div> <!-- end row -->
+        </div>
+    </div>
 </div>
+
+<script>
+    function exportToExcel(tableId, filename) {
+        var table = document.getElementById(tableId);
+        var html = table.outerHTML;
+        var blob = new Blob([html], {
+            type: 'application/vnd.ms-excel'
+        });
+        var a = document.createElement('a');
+        a.href = window.URL.createObjectURL(blob);
+        a.download = filename + '.xls';
+        a.click();
+    }
+
+    function exportToPdf(tableId, filename) {
+        var table = document.getElementById(tableId);
+        var html = table.outerHTML;
+        var style = '<style>';
+        style += 'table {width: 100%;font: 17px Calibri;}';
+        style += 'table, th, td {border: solid 1px #DDD; border-collapse: collapse;';
+        style += 'padding: 2px 3px;text-align: center; vertical-align: middle;}';
+        style += '</style>';
+        var blob = new Blob([style + html], {
+            type: 'application/pdf'
+        });
+        var a = document.createElement('a');
+        a.href = window.URL.createObjectURL(blob);
+        a.download = filename + '.pdf';
+        a.click();
+    }
+</script>
+
 
 
 

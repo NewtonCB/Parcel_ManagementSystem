@@ -112,17 +112,10 @@ while ($row=mysqli_fetch_array($ret)) {
     <th>Sender Contact Number</th>
     <td><?php  echo $row['SenderContactnumber'];?></td>
   </tr>
-  <tr>
-    <th>Sender Address</th>
-    <td><?php  echo $row['SenderAddress'];?></td>
-  </tr>
+  
   <tr>
     <th>Sender City</th>
     <td><?php  echo $row['SenderCity'];?></td>
-  </tr>
-  <tr>
-    <th>Sender State</th>
-    <td><?php  echo $row['SenderState'];?></td>
   </tr>
   <tr>
     <th>Sender Pincode</th>
@@ -149,17 +142,10 @@ while ($row=mysqli_fetch_array($ret)) {
     <td><?php  echo $row['RecipientContactnumber'];?></td>
   </tr>
   <tr>
-    <th>Recipient Address</th>
-    <td><?php  echo $row['RecipientAddress'];?></td>
-  </tr>
-  <tr>
     <th>Recipient City</th>
     <td><?php  echo $row['RecipientCity'];?></td>
   </tr>
-  <tr>
-    <th>Recipient State</th>
-    <td><?php  echo $row['RecipientState'];?></td>
-  </tr>
+ 
   <tr>
     <th>Recipient Pincode</th>
     <td><?php  echo $row['RecipientPincode'];?></td>
@@ -180,22 +166,13 @@ while ($row=mysqli_fetch_array($ret)) {
     <td><?php  echo $row['ParcelWeight'];?></td>
   </tr>
   <tr>
-    <th>Parcel Dimension Length</th>
-    <td><?php  echo $row['ParcelDimensionlen'];?></td>
+    <th>South Africa Price</th>
+    <td><?php  echo $row['TZSprice'];?></td>
   </tr>
   <tr>
-    <th>Parcel Dimension Width</th>
-    <td><?php  echo $row['ParcelDimensionwidth'];?></td>
+    <th>Tanzania Price</th>
+    <td><?php  echo $row['ZARprice'];?></td>
   </tr>
-  <tr>
-    <th>Parcel Dimension Height</th>
-    <td><?php  echo $row['ParcelDimensionheight'];?></td>
-  </tr>
-  <tr>
-    <th>Parcel Price</th>
-    <td><?php  echo $row['ParcelPrice'];?></td>
-  </tr>
-
   
   
 

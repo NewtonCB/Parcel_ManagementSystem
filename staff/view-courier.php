@@ -170,10 +170,13 @@ while ($row=mysqli_fetch_array($ret)) {
   </tr>
   
   <tr>
-    <th>Parcel Price</th>
-    <td><?php  echo $row['ParcelPrice'];?></td>
+    <th>South Africa Price</th>
+    <td><?php  echo $row['TZSprice'];?></td>
   </tr>
-
+  <tr>
+    <th>Tanzania Price</th>
+    <td><?php  echo $row['ZARprice'];?></td>
+  </tr>
   
   
 
