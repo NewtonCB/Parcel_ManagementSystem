@@ -24,7 +24,6 @@ class Reserve {
     $this->stmt = $this->pdo->prepare($sql);
     $this->stmt->execute($data);
   }
-
   // (D) GET SEATS FOR GIVEN SESSION
   function get ($sessid) {
     $this->query(
@@ -37,7 +36,6 @@ class Reserve {
     $sess = $this->stmt->fetchAll();
     return $sess;
   }
-
 // (E) SAVE RESERVATION
 function save($sessid, $userid, $seats)
 {
