@@ -7,7 +7,7 @@ include('includes/dbconnection.php');
 <html lang="en">
 
   <head>
-    <title>Courier Management System|| Parcel Tracking</title>
+    <title>Mkombe Luxury Bus Management system</title>
    
     <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,700|Oswald:400,700" rel="stylesheet">
 

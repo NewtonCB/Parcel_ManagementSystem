@@ -33,19 +33,19 @@ while ($row=mysqli_fetch_array($query)) {
 
 
             <div class="site-logo">
-              <a href="index.php" class="text-black"><span class="text-primary">Mkombe Luxury Bus </a>
+              <a href="../index.php" class="text-black"><span class="text-primary">Mkombe Luxury Bus </a>
             </div>
 
             <div class="col-12">
               <nav class="site-navigation text-right ml-auto " role="navigation">
 
                 <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
-                  <li><a href="index.php" class="nav-link">Home</a></li>
+                  <li><a href="../index.php" class="nav-link">Home</a></li>
                    <li class="has-children">
                     <a href="#about-section" class="nav-link">Ticket & Parcel</a>
                     <ul class="dropdown arrow-top">
-                      <li><a href="seatbooking/index2.php" class="nav-link">Book Seat</a></li>
-                      <li><a href="track-complain.php" class="nav-link">Track Parcel</a></li>
+                      <li><a href="seatbooking/index.php" class="nav-link">Book Seat</a></li>
+                      <li><a href="../track-complaint.php" class="nav-link">Track Parcel</a></li>
                       
                     </ul>
                   </li>
@@ -54,7 +54,7 @@ while ($row=mysqli_fetch_array($query)) {
  <li><a href="#contact-section" class="nav-link">Contact</a></li>
 
 
-                   <li><a href="raise-complaint.php" class="nav-link">Complaint</a></li>
+                   <li><a href="../raise-complaint.php" class="nav-link">Complaint</a></li>
             
                 </ul>
               </nav>
