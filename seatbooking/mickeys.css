@@ -1,0 +1,148 @@
+fieldset {
+    margin: 0;
+    min-width: 0;
+}
+
+fieldset,
+legend {
+    padding: 0;
+    border: 0;
+}
+
+*,
+::after,
+::before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+no-padding-top {
+    padding-top: 0 !important;
+}
+
+.text-muted {
+    color: #999;
+}
+
+legend {
+    font-size: 12px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-transform: uppercase;
+}
+
+legend {
+    width: 100%;
+    margin-bottom: 20px;
+    font-size: 19.5px;
+    line-height: inherit;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+fieldset,
+legend {
+    padding: 0;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    border: 0;
+    border-bottom-color: currentcolor;
+    border-bottom-style: none;
+    border-bottom-width: 0px;
+}
+
+legend,
+pre {
+    display: block;
+    color: #333;
+}
+
+.text-black {
+    color: #000;
+}
+
+.text-black {
+    color: #000;
+    font-weight: 900;
+}
+
+.small,
+small {
+    font-size: 92%;
+}
+
+.row {
+    margin-left: -10px;
+    margin-right: -10px;
+}
+
+@media (min-width: 1025px) .col-md-12 {
+    width: 100%;
+}
+
+@media (min-width: 1025px) .col-md-1,
+.col-md-10,
+.col-md-11,
+.col-md-12,
+.col-md-2,
+.col-md-3,
+.col-md-4,
+.col-md-5,
+.col-md-6,
+.col-md-7,
+.col-md-8,
+.col-md-9 {
+    float: left;
+}
+.seatChart-wrapper {
+    padding-left: 30px;
+  }
+    @media (min-width: 769px)
+  .col-sm-6 {
+    width: 50%;
+  }
+  div.seatCharts-space {
+    background-color: #fff;
+  }
+  .caret, .datepicker td, .datepicker th, .input-daterange .add-on, .input-daterange input, div.seatCharts-cell {
+    text-align: center;
+  }
+  div.seatCharts-row {
+    height: 45px;
+  }
+  div.seatCharts-seat {
+    color: #333;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 0;
+    cursor: default;
+    box-shadow: none;
+    background-color: transparent;
+    background-image: url(img/bus-seat22.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 140%;
+  }
+  div.seatCharts-cell {
+    height: 35px;
+    width: 35px;
+    margin: 5px;
+    float: left;
+    outline: 0;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 30px;
+    color: #7a7a7e;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  }
+  div.seatCharts-seat.focused, div.seatCharts-seat.selected {
+    background-image: url(img/bus-seatred2.png);
+    color: white;
+  }
+  div.seatCharts-seat.unavailable {
+    background-image: url(img/bus-seatgreen2.png);
+    cursor: not-allowed;
+    color: #fff;
+  }
