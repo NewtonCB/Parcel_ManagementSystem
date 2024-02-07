@@ -7,24 +7,23 @@ if (isset($_POST['submit'])) {
 };
 
 // for seat booking 
- $query = "SELECT seat_id, is_taken , is_booked FROM seats";
- $result = mysqli_query($con, $query);
+$query = "SELECT seat_id, is_taken , is_booked FROM seats";
+$result = mysqli_query($con, $query);
 
- $takenSeats = array();
- $bookedSeats = array();
+$takenSeats = array();
+$bookedSeats = array();
 
- while($row = mysqli_fetch_assoc($result)) {
-    if ($row['is_taken'] == 1) {
-        $takenSeats[] = $row['seat_id'];
-      }
-     elseif ($row['is_booked'] == 1) {
-        $bookedSeats[] = $row['seat_id'];
-      }
-     }
-     $takenSeatsJSON = json_encode($takenSeats);
-     $bookedSeatsJSON = json_encode($bookedSeats);
+while ($row = mysqli_fetch_assoc($result)) {
+  if ($row['is_taken'] == 1) {
+    $takenSeats[] = $row['seat_id'];
+  } elseif ($row['is_booked'] == 1) {
+    $bookedSeats[] = $row['seat_id'];
+  }
+}
+$takenSeatsJSON = json_encode($takenSeats);
+$bookedSeatsJSON = json_encode($bookedSeats);
 
-    ?>
+?>
 
 
 <!DOCTYPE html>
@@ -86,422 +85,434 @@ if (isset($_POST['submit'])) {
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-sm-8 mb-5" data-aos="fade-up" data-aos-delay="100">
-            <!-- <div class="card p-3 shadow-sm"> -->
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-7 mb-5" data-aos="fade-up" data-aos-delay="100">
+              <!-- <div class="card p-3 shadow-sm"> -->
 
-            <form method="POST" action="" accept-charset="UTF-8" id="booking-form" novalidate="novalidate"><input name="_token" type="hidden" value="8hwR8o5UYEW0OCATrp2PQPVTaL6qnbSxWS9CkMDl">
-              <div class="panel booking-wizard" style="border: 1px solid #e6e6e6">
-                <div class="iconbar">
-                  <div class="navbar-inner" style="position: relative">
-                    <div class="liner"></div>
-                    <ul class="nav-justified  nav-tabs-justified nav nav-tabs nav-step">
-                      <li class="active"><a href="#seat" data-toggle="tab" aria-expanded="true">
-                          <span class="round-tabs" data-toggle="tooltip" title="" data-html="true" data-placement="bottom" data-original-title="<small>Kiti cha Abiria</small>">
-                            <span class="icon-bus icon-2x"></span>
-                          </span>
-                        </a>
-                      </li>
-                      <li class=""><a href="#customer" data-toggle="tab" aria-expanded="false">
-                          <span class="round-tabs" data-toggle="tooltip" title="" data-html="true" data-placement="bottom" data-original-title="<small>Abiria</small>">
-                            <span class="icon-user icon-2x"></span>
-                          </span>
-                        </a>
-                      </li>
-                      <li><a href="#confirm" data-toggle="tab">
-                          <span class="round-tabs" data-toggle="tooltip" data-html="true" title="" data-placement="bottom" data-original-title="<small>Hakiki Taarifa</small>">
-                            <i class="icon-check icon-2x"></i>
-                          </span>
-
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="panel-body no-padding-top">
-                  <div class="row">
-                    <div class="tab-content">
-                      <div class="tab-pane   active" id="seat">
-
-                        <fieldset>
-                          <legend class="no-padding-top text-muted">
-                            <small class="text-black">Chagua Kiti Chako</small>
-                            <br>
-                            <span style="text-transform: none"><i>
-                                Chagua kiti kwa kubonyeza alama ya kiti unachohitaji
-                              </i></span>
-                          </legend>
-                          <div class="row" id="seat-chart-BS-2498516143">
-                            <div class="col-md-12 col-xs-12">
-                              <div class="row">
-                                <div class="col-sm-6 seatChart-wrapper col-xs-6" style="border-right: 1px solid #ddd">
-                                  <p class="text-center no-margin-bottom visible-md text-bold-500 small text-muted">
-                                    MBELE</p>
-                                  <div class="seatCharts-row">
-                                    <div class="seatCharts-cell seatCharts-space"></div>
-                                    <div class="seatCharts-cell seatCharts-space"></div>
-                                    <div class="seatCharts-cell seatCharts-space"></div>
-                                    <div class="seatCharts-cell seatCharts-space"></div>
-                                    <div class="seatCharts-cell seatCharts-space">
-                                      <span title="Kiti cha dereva" class="icon-steering-wheel text-muted"></span>
-                                    </div>
-                                  </div>
-                                  <div id="seat-chart" class="seatCharts-container" tabindex="0" aria-activedescendant="G1">
-                                    <div class="seatCharts-row">
-                                      <div id="A3" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">A3</div>
-                                      <div id="A4" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">A4</div>
-                                      <div class="seatCharts-cell seatCharts-space"></div>
-                                      <div id="A2" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">A2</div>
-                                      <div id="A1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">A1</div>
-                                    </div>
-                                    <div class="seatCharts-row">
-                                      <div id="B3" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">B3</div>
-                                      <div id="B4" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">B4</div>
-                                      <div class="seatCharts-cell seatCharts-space"></div>
-                                      <div id="B2" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">B2</div>
-                                      <div id="B1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">B1</div>
-                                    </div>
-                                    <div class="seatCharts-row">
-                                      <div id="C3" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">C3</div>
-                                      <div id="C4" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">C4</div>
-                                      <div class="seatCharts-cell seatCharts-space"></div>
-                                      <div id="C2" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">C2</div>
-                                      <div id="C1" role="checkbox" aria-checked="true" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">C1</div>
-                                    </div>
-                                    <div class="seatCharts-row">
-                                      <div id="D3" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">D3</div>
-                                      <div id="D4" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">D4</div>
-                                      <div class="seatCharts-cell seatCharts-space"></div>
-                                      <div id="D2" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">D2</div>
-                                      <div id="D1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">D1</div>
-                                    </div>
-                                    <div class="seatCharts-row">
-                                      <div id="E3" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">E3</div>
-                                      <div id="E4" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">E4</div>
-                                      <div class="seatCharts-cell seatCharts-space"></div>
-                                      <div id="E2" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">E2</div>
-                                      <div id="E1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">E1</div>
-                                    </div>
-                                    <div class="seatCharts-row">
-                                      <div id="F3" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">F3</div>
-                                      <div id="F4" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">F4</div>
-                                      <div class="seatCharts-cell seatCharts-space"></div>
-                                      <div id="F2" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">F2</div>
-                                      <div id="F1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">F1</div>
-                                    </div>
-                                    <div class="seatCharts-row">
-                                      <div id="G3" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">G3</div>
-                                      <div id="G4" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">G4</div>
-                                      <div class="seatCharts-cell seatCharts-space"></div>
-                                      <div id="G2" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">G2</div>
-                                      <div id="G1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">G1</div>
-                                    </div>
-                                    <div class="seatCharts-row">
-                                      <div id="H3" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">H3</div>
-                                      <div id="H4" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">H4</div>
-                                      <div class="seatCharts-cell seatCharts-space"></div>
-                                      <div id="H2" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">H2</div>
-                                      <div id="H1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">H1</div>
-                                    </div>
-                                    <div class="seatCharts-row">
-                                      <div id="I3" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">I3</div>
-                                      <div id="I4" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">I4</div>
-                                      <div class="seatCharts-cell seatCharts-space"></div>
-                                      <div id="I2" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">I2</div>
-                                      <div id="I1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">I1</div>
-                                    </div>
-                                    <div class="seatCharts-row">
-                                      <div id="J3" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">J3</div>
-                                      <div id="J4" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">J4</div>
-                                      <div class="seatCharts-cell seatCharts-space"></div>
-                                      <div id="J2" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">J2</div>
-                                      <div id="J1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">J1</div>
-                                    </div>
-                                    <div class="seatCharts-row">
-                                      <div id="K3" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">K3</div>
-                                      <div id="K4" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">K4</div>
-                                      <div class="seatCharts-cell seatCharts-space"></div>
-                                      <div id="K2" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">K2</div>
-                                      <div id="K1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">K1</div>
-                                    </div>
-                                    <div class="seatCharts-row">
-                                      <div id="L3" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">L3</div>
-                                      <div id="L4" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">L4</div>
-                                      <div class="seatCharts-cell seatCharts-space"></div>
-                                      <div id="L2" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">L2</div>
-                                      <div id="L1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">L1</div>
-                                    </div>
-                                    <div class="seatCharts-row">
-                                      <div id="M3" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">M3</div>
-                                      <div id="M4" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">M4</div>
-                                      <div class="seatCharts-cell seatCharts-space"></div>
-                                      <div id="M2" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">M2</div>
-                                      <div id="M1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">M1</div>
-                                    </div>
-                                    <div class="seatCharts-row">
-                                      <div id="N3" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">N3</div>
-                                      <div id="N4" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">N4</div>
-                                      <div id="N5" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">N5</div>
-                                      <div id="N2" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">N2</div>
-                                      <div id="N1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">N1</div>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6 col-xs-6">
-                                  <fieldset>
-                                    <legend class="no-padding-top text-muted">
-                                      <small class="text-black">Taarifa za Machaguo
-                                      </small>
-                                    </legend>
-                                  </fieldset>
-                                  <div class="booking-details">
-                                    <p class="text-bold-500 small mb-5">
-                                      Kiti kilichochaguliwa:
-                                      <span id="selectedSeats">
-                                        
-                                      </span>
-                                    </p>
-                                    <div class="form-group mb-10">
-                                      <input name="seat" type="hidden" value="C1">
-                                    </div>
-                                    <hr class="mt-10">
-                                  </div>
-                                  <div id="legend" class="text-size-mini seatCharts-legend">
-                                    <ul class="seatCharts-legendList">
-                                      <li class="seatCharts-legendItem">
-                                        <div class="seatCharts-seat seatCharts-cell available" style=" pointer-events: none;"></div><span class="seatCharts-legendDescription">Kilichopo</span>
-                                      </li>
-                                      <li class="seatCharts-legendItem">
-                                        <div class="seatCharts-seat seatCharts-cell selected" style="  pointer-events: none;"></div><span class="seatCharts-legendDescription">Kilichochaguliwa</span>
-                                      </li>
-                                      <li class="seatCharts-legendItem">
-                                        <div class="seatCharts-seat seatCharts-cell unavailable"></div><span class="seatCharts-legendDescription">Kisichopatikana</span>
-                                      </li>
-                                    </ul>
-                                  </div>
-                                  <br>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </fieldset>
-
-
-
-
-                      </div>
-                      <div class="tab-pane" id="customer">
-                        <fieldset>
-                          <legend class="no-padding-top text-muted">
-                            <small class="text-black">Taarifa za abiria</small>
-                            <br>
-                            <span style="text-transform: none"><i>Tafadhali jaza sehemu zote zenye ulazima hapo chini</i></span>
-                          </legend>
-
-                          <div class="col-sm-6">
-                            <div class="row">
-                              <div class="form-group has-feedback">
-                                <label class="control-label">
-                                  Jina la Kwanza
-                                </label>
-                                <input class="form-control" placeholder="Jina la kwanza" name="first_name" type="text">
-                                <span class="fa fa-user form-control-feedback"></span>
-                              </div>
-                              <div class="form-group has-feedback">
-                                <label class="control-label">
-                                  Jina la Mwisho
-                                </label>
-                                <input class="form-control" placeholder="Jina la mwisho" name="last_name" type="text">
-                                <span class="fa fa-user form-control-feedback"></span>
-                              </div>
-                              <div class="form-group has-feedback">
-                                <label class="control-label">
-                                  Namba ya Simu
-                                </label>
-                                <input class="form-control" placeholder="(000) 0000000" name="phone" type="text">
-                                <span class="fa fa-phone form-control-feedback"></span>
-                              </div>
-                              <div class="form-group has-feedback">
-                                <label class="control-label">
-                                  Barua Pepe
-                                </label>
-                                <input class="form-control" placeholder="example@domain.com" name="email" type="text">
-                                <span class="fa fa-envelope form-control-feedback"></span>
-                              </div>
-                              <div class="form-group has-feedback">
-                                <label class="control-label">
-                                  Namba ya TIN (<small>Kama ipo</small>)
-                                </label>
-                                <input class="form-control" placeholder="Namba ya TIN kama ipo" name="tin_number" type="text">
-                                <span class="fa fa-envelope form-control-feedback"></span>
-                              </div>
-                            </div>
-                          </div>
-
-                        </fieldset>
-                      </div>
-                      <div class="tab-pane" id="confirm">
-                        <fieldset>
-                          <legend class="no-padding-top text-muted">
-                            <small class="text-black">Muhtasari wa malipo</small>
-                            <br>
-                            <span style="text-transform: none"><i> Kagua na uhakikishe taarifa za malipo
-                                maelezo ya ili kuhifadhi tiketi yako</i></span>
-                          </legend>
-                          <div class="alert small alert-grayish">
-                            <span>
-                              <b>Muhimu:</b> Utakuwa na dakika 20 ili kukamilisha malipo ya tiketi, kushindwa kufanya hivyo kutasababisha kufuta moja kwa moja taarifa za tiketi yako
+              <form method="POST" action="" accept-charset="UTF-8" id="booking-form" novalidate="novalidate"><input name="_token" type="hidden" value="8hwR8o5UYEW0OCATrp2PQPVTaL6qnbSxWS9CkMDl">
+                <div class="panel booking-wizard" style="border: 1px solid #e6e6e6">
+                  <div class="iconbar">
+                    <div class="navbar-inner" style="position: relative">
+                      <div class="liner"></div>
+                      <ul class="nav-justified  nav-tabs-justified nav nav-tabs nav-step">
+                        <li class="active"><a href="#seat" data-toggle="tab" aria-expanded="true">
+                            <span class="round-tabs" data-toggle="tooltip" title="" data-html="true" data-placement="bottom" data-original-title="<small>Kiti cha Abiria</small>">
+                              <span class="icon-bus icon-2x"></span>
                             </span>
-                          </div>
-                          <div class="row">
-                            <div class="col-md-12">
-                              <h6 style="font-size: 15px"><b>Bei ya tiketi</b> :
-                                29,000 /=
-                              </h6>
+                          </a>
+                        </li>
+                        <li class=""><a href="#customer" data-toggle="tab" aria-expanded="false">
+                            <span class="round-tabs" data-toggle="tooltip" title="" data-html="true" data-placement="bottom" data-original-title="<small>Abiria</small>">
+                              <span class="icon-user icon-2x"></span>
+                            </span>
+                          </a>
+                        </li>
+                        <li><a href="#confirm" data-toggle="tab">
+                            <span class="round-tabs" data-toggle="tooltip" data-html="true" title="" data-placement="bottom" data-original-title="<small>Hakiki Taarifa</small>">
+                              <i class="icon-check icon-2x"></i>
+                            </span>
+
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="panel-body no-padding-top">
+                    <div class="row">
+                      <div class="tab-content">
+                        <div class="tab-pane   active" id="seat">
+
+                          <fieldset>
+                            <legend class="no-padding-top text-muted">
+                              <small class="text-black">Chagua Kiti Chako</small>
+                              <br>
+                              <span style="text-transform: none"><i>
+                                  Chagua kiti kwa kubonyeza alama ya kiti unachohitaji
+                                </i></span>
+                            </legend>
+                            <div class="row" id="seat-chart-BS-2498516143">
+                              <div class="col-md-12 col-xs-12">
+                                <div class="row">
+                                  <div class="col-sm-6 seatChart-wrapper col-xs-6" style="border-right: 1px solid #ddd">
+                                    <p class="text-center no-margin-bottom visible-md text-bold-500 small text-muted">
+                                      MBELE</p>
+                                    <div class="seatCharts-row">
+                                      <div class="seatCharts-cell seatCharts-space"></div>
+                                      <div class="seatCharts-cell seatCharts-space"></div>
+                                      <div class="seatCharts-cell seatCharts-space"></div>
+                                      <div class="seatCharts-cell seatCharts-space"></div>
+                                      <div class="seatCharts-cell seatCharts-space">
+                                        <span title="Kiti cha dereva" class="icon-steering-wheel text-muted"></span>
+                                      </div>
+                                    </div>
+                                    <div id="seat-chart" class="seatCharts-container" tabindex="0" aria-activedescendant="G1">
+                                      <div class="seatCharts-row">
+                                        <div id="A3" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">A3</div>
+                                        <div id="A4" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">A4</div>
+                                        <div class="seatCharts-cell seatCharts-space"></div>
+                                        <div id="A2" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">A2</div>
+                                        <div id="A1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">A1</div>
+                                      </div>
+                                      <div class="seatCharts-row">
+                                        <div id="B3" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">B3</div>
+                                        <div id="B4" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">B4</div>
+                                        <div class="seatCharts-cell seatCharts-space"></div>
+                                        <div id="B2" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">B2</div>
+                                        <div id="B1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">B1</div>
+                                      </div>
+                                      <div class="seatCharts-row">
+                                        <div id="C3" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">C3</div>
+                                        <div id="C4" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">C4</div>
+                                        <div class="seatCharts-cell seatCharts-space"></div>
+                                        <div id="C2" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">C2</div>
+                                        <div id="C1" role="checkbox" aria-checked="true" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">C1</div>
+                                      </div>
+                                      <div class="seatCharts-row">
+                                        <div id="D3" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">D3</div>
+                                        <div id="D4" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">D4</div>
+                                        <div class="seatCharts-cell seatCharts-space"></div>
+                                        <div id="D2" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">D2</div>
+                                        <div id="D1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">D1</div>
+                                      </div>
+                                      <div class="seatCharts-row">
+                                        <div id="E3" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">E3</div>
+                                        <div id="E4" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">E4</div>
+                                        <div class="seatCharts-cell seatCharts-space"></div>
+                                        <div id="E2" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">E2</div>
+                                        <div id="E1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">E1</div>
+                                      </div>
+                                      <div class="seatCharts-row">
+                                        <div id="F3" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">F3</div>
+                                        <div id="F4" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">F4</div>
+                                        <div class="seatCharts-cell seatCharts-space"></div>
+                                        <div id="F2" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">F2</div>
+                                        <div id="F1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">F1</div>
+                                      </div>
+                                      <div class="seatCharts-row">
+                                        <div id="G3" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">G3</div>
+                                        <div id="G4" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">G4</div>
+                                        <div class="seatCharts-cell seatCharts-space"></div>
+                                        <div id="G2" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">G2</div>
+                                        <div id="G1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">G1</div>
+                                      </div>
+                                      <div class="seatCharts-row">
+                                        <div id="H3" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">H3</div>
+                                        <div id="H4" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">H4</div>
+                                        <div class="seatCharts-cell seatCharts-space"></div>
+                                        <div id="H2" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">H2</div>
+                                        <div id="H1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">H1</div>
+                                      </div>
+                                      <div class="seatCharts-row">
+                                        <div id="I3" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">I3</div>
+                                        <div id="I4" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">I4</div>
+                                        <div class="seatCharts-cell seatCharts-space"></div>
+                                        <div id="I2" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">I2</div>
+                                        <div id="I1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">I1</div>
+                                      </div>
+                                      <div class="seatCharts-row">
+                                        <div id="J3" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">J3</div>
+                                        <div id="J4" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">J4</div>
+                                        <div class="seatCharts-cell seatCharts-space"></div>
+                                        <div id="J2" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">J2</div>
+                                        <div id="J1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">J1</div>
+                                      </div>
+                                      <div class="seatCharts-row">
+                                        <div id="K3" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">K3</div>
+                                        <div id="K4" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">K4</div>
+                                        <div class="seatCharts-cell seatCharts-space"></div>
+                                        <div id="K2" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">K2</div>
+                                        <div id="K1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">K1</div>
+                                      </div>
+                                      <div class="seatCharts-row">
+                                        <div id="L3" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">L3</div>
+                                        <div id="L4" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">L4</div>
+                                        <div class="seatCharts-cell seatCharts-space"></div>
+                                        <div id="L2" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">L2</div>
+                                        <div id="L1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">L1</div>
+                                      </div>
+                                      <div class="seatCharts-row">
+                                        <div id="M3" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">M3</div>
+                                        <div id="M4" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">M4</div>
+                                        <div class="seatCharts-cell seatCharts-space"></div>
+                                        <div id="M2" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">M2</div>
+                                        <div id="M1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">M1</div>
+                                      </div>
+                                      <div class="seatCharts-row">
+                                        <div id="N3" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">N3</div>
+                                        <div id="N4" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">N4</div>
+                                        <div id="N5" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">N5</div>
+                                        <div id="N2" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">N2</div>
+                                        <div id="N1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell ">N1</div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-sm-6 col-xs-6">
+                                    <fieldset>
+                                      <legend class="no-padding-top text-muted">
+                                        <small class="text-black">Taarifa za Machaguo
+                                        </small>
+                                      </legend>
+                                    </fieldset>
+                                    <div class="booking-details">
+                                      <p class="text-bold-500 small mb-5 ">
+                                        Kiti kilichochaguliwa: </p>
+                                      <ul id="selectedSeats"></ul>
+
+                                      <div class="form-group mb-10">
+                                        <input name="seat" type="hidden" value="C1">
+                                      </div>
+                                      <hr class="mt-10">
+                                    </div>
+                                    <div id="legend" class="text-size-mini seatCharts-legend">
+                                      <ul class="seatCharts-legendList">
+                                        <li class="seatCharts-legendItem">
+                                          <div class="seatCharts-seat seatCharts-cell available" style=" pointer-events: none;"></div><span class="seatCharts-legendDescription">Kilichopo</span>
+                                        </li>
+                                        <li class="seatCharts-legendItem">
+                                          <div class="seatCharts-seat seatCharts-cell selected" style="  pointer-events: none;"></div><span class="seatCharts-legendDescription">Kilichochaguliwa</span>
+                                        </li>
+                                        <li class="seatCharts-legendItem">
+                                          <div class="seatCharts-seat seatCharts-cell unavailable"></div><span class="seatCharts-legendDescription">Kisichopatikana</span>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                    <br>
+                                  </div>
+                                </div>
+                              </div>
                             </div>
+                            <div class="panel-footer bg-white">
+
+                              <a id="previousBtn" href="javascript:;" class="btn grayish">
+                                <small><i class="icon-arrow-left12"></i></small>
+                              </a>
+
+                              <a class="btn btn-secondary" onclick="nextTab('customer')">
+                                <small>Hatua Ifuatayo <i class="icon-arrow-right13"></i></small>
+                              </a>
+
+                            </div>
+                          </fieldset>
+
+                        </div>
+                        <div class="tab-pane" id="customer">
+                          <fieldset>
+                            <legend class="no-padding-top text-muted">
+                              <small class="text-black">Taarifa za abiria</small>
+                              <br>
+                              <span style="text-transform: none"><i>Tafadhali jaza sehemu zote zenye ulazima hapo chini</i></span>
+                            </legend>
+
                             <div class="col-sm-6">
-                              <div class="form-group">
-                                <label class="control-label">
-                                  Namba ya punguzo
+                              <div class="row">
+                                <div class="form-group has-feedback">
+                                  <label class="control-label">
+                                    Jina la Kwanza
+                                  </label>
+                                  <input class="form-control" placeholder="Jina la kwanza" name="first_name" type="text">
+                                  <span class="fa fa-user form-control-feedback"></span>
+                                </div>
+                                <div class="form-group has-feedback">
+                                  <label class="control-label">
+                                    Jina la Mwisho
+                                  </label>
+                                  <input class="form-control" placeholder="Jina la mwisho" name="last_name" type="text">
+                                  <span class="fa fa-user form-control-feedback"></span>
+                                </div>
+                                <div class="form-group has-feedback">
+                                  <label class="control-label">
+                                    Namba ya Simu
+                                  </label>
+                                  <input class="form-control" placeholder="(000) 0000000" name="phone" type="text">
+                                  <span class="fa fa-phone form-control-feedback"></span>
+                                </div>
+                                <div class="form-group has-feedback">
+                                  <label class="control-label">
+                                    Barua Pepe
+                                  </label>
+                                  <input class="form-control" placeholder="example@domain.com" name="email" type="text">
+                                  <span class="fa fa-envelope form-control-feedback"></span>
+                                </div>
+                                <div class="form-group has-feedback">
+                                  <label class="control-label">
+                                    Namba ya TIN (<small>Kama ipo</small>)
+                                  </label>
+                                  <input class="form-control" placeholder="Namba ya TIN kama ipo" name="tin_number" type="text">
+                                  <span class="fa fa-envelope form-control-feedback"></span>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="panel-footer bg-white">
+
+                              <a onclick="prevTab('seat')"  class="btn grayish">
+                                <small><i class="icon-arrow-left12">Nyuma</i></small>
+                              </a>
+
+                              <a onclick="nextTab('confirm')" class="btn btn-secondary">
+                                <small>Hatua Ifuatayo <i class="icon-arrow-right13"></i></small>
+                              </a>
+
+                            </div>
+
+                          </fieldset>
+                        </div>
+                        <div class="tab-pane" id="confirm">
+                          <fieldset>
+                            <legend class="no-padding-top text-muted">
+                              <small class="text-black">Muhtasari wa malipo</small>
+                              <br>
+                              <span style="text-transform: none"><i> Kagua na uhakikishe taarifa za malipo
+                                  maelezo ya ili kuhifadhi tiketi yako</i></span>
+                            </legend>
+                            <div class="alert small alert-grayish">
+                              <span>
+                                <b>Muhimu:</b> Utakuwa na dakika 20 ili kukamilisha malipo ya tiketi, kushindwa kufanya hivyo kutasababisha kufuta moja kwa moja taarifa za tiketi yako
+                              </span>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-12">
+                                <h6 style="font-size: 15px"><b>Bei ya tiketi</b> :
+                                  29,000 /=
+                                </h6>
+                              </div>
+                              <div class="col-sm-6">
+                                <div class="form-group">
+                                  <label class="control-label">
+                                    Namba ya punguzo
+                                  </label>
+                                  <input class="form-control" placeholder="Andika namba ya punguzo lako" name="discount" type="text">
+                                  <small class="text-muted">Kama una namba yoyote ya punguzo
+                                  </small>
+                                </div>
+                              </div>
+                            </div>
+                          </fieldset>
+
+                          <fieldset>
+
+                            <legend class="no-padding-top text-muted">
+                              <small class="text-black">Njia ya Malipo</small>
+                              <br>
+                              <span style="text-transform: none"><i> Chagua njia ya malipo unayohitaji</i></span>
+                            </legend>
+                            <div class="form-group text-center">
+                              <div class="radio">
+                                <label class="radio-inline" title="Pay with TigoPesa">
+                                  <input data-method="tigo-container" name="method" type="radio" value="1">
+                                  Tigo Pesa
+                                  <br>
                                 </label>
-                                <input class="form-control" placeholder="Andika namba ya punguzo lako" name="discount" type="text">
-                                <small class="text-muted">Kama una namba yoyote ya punguzo
-                                </small>
+                                <label class="radio-inline" title="Pay with Vodacom Mpesa">
+                                  <input data-method="voda-container" name="method" type="radio" value="2">
+                                  Vodacom M-Pesa
+
+                                </label>
+
+                                <label class="radio-inline" title="Pay with Vodacom Mpesa">
+                                  <input name="method" type="radio" value="5">
+                                  Njia Nyingine
+                                </label>
+
                               </div>
                             </div>
-                          </div>
-                        </fieldset>
 
-                        <fieldset>
-
-                          <legend class="no-padding-top text-muted">
-                            <small class="text-black">Njia ya Malipo</small>
-                            <br>
-                            <span style="text-transform: none"><i> Chagua njia ya malipo unayohitaji</i></span>
-                          </legend>
-                          <div class="form-group text-center">
-                            <div class="radio">
-                              <label class="radio-inline" title="Pay with TigoPesa">
-                                <input data-method="tigo-container" name="method" type="radio" value="1">
-                                Tigo Pesa
-                                <br>
-                              </label>
-                              <label class="radio-inline" title="Pay with Vodacom Mpesa">
-                                <input data-method="voda-container" name="method" type="radio" value="2">
-                                Vodacom M-Pesa
-
-                              </label>
-
-                              <label class="radio-inline" title="Pay with Vodacom Mpesa">
-                                <input name="method" type="radio" value="5">
-                                Njia Nyingine
-                              </label>
-
-                            </div>
-                          </div>
-
-                          <div class="row">
-                            <hr class="no-margin">
-                            <div class="panel-body panel-box voda-container" style="background: rgb(251, 251, 251); border-bottom: 1px solid rgb(208, 208, 208); display: none;">
-                              <div class="row">
-                                <div class="form-group col-md-6 col-md-push-3">
-                                  <label class="control-label">
-                                    Namba ya simu
-                                  </label>
-                                  <input class="form-control pay-number" placeholder="Andika namba yako ya vodacom" name="phone_number" type="text">
-                                  <small class="text-muted">
-                                    Namba ya malipo ya Vodacom M-Pesa
-                                  </small>
+                            <div class="row">
+                              <hr class="no-margin">
+                              <div class="panel-body panel-box voda-container" style="background: rgb(251, 251, 251); border-bottom: 1px solid rgb(208, 208, 208); display: none;">
+                                <div class="row">
+                                  <div class="form-group col-md-6 col-md-push-3">
+                                    <label class="control-label">
+                                      Namba ya simu
+                                    </label>
+                                    <input class="form-control pay-number" placeholder="Andika namba yako ya vodacom" name="phone_number" type="text">
+                                    <small class="text-muted">
+                                      Namba ya malipo ya Vodacom M-Pesa
+                                    </small>
+                                  </div>
                                 </div>
+                                <p>
+                                  Baada ya kubofya button ya ticket,
+                                  Utatumiwa maombi ya kukamilisha malipo kwa simu yako ya Vodacom M-Pesa
+                                </p>
                               </div>
-                              <p>
-                                Baada ya kubofya button ya ticket,
-                                Utatumiwa maombi ya kukamilisha malipo kwa simu yako ya Vodacom M-Pesa
-                              </p>
-                            </div>
-                            <div class="panel-body panel-box tigo-container" style="background: rgb(251, 251, 251); border-bottom: 1px solid rgb(208, 208, 208); display: none;">
-                              <div class="row">
-                                <div class="form-group col-md-6 col-md-push-3">
-                                  <label class="control-label">
-                                    Namba ya simu
-                                  </label>
-                                  <input class="form-control pay-number" placeholder="Andika namba yako ya tigopesa" name="phone_number" type="text">
-                                  <small class="text-muted">
-                                    Namba ya malipo ya Tigo Pesa
-                                  </small>
+                              <div class="panel-body panel-box tigo-container" style="background: rgb(251, 251, 251); border-bottom: 1px solid rgb(208, 208, 208); display: none;">
+                                <div class="row">
+                                  <div class="form-group col-md-6 col-md-push-3">
+                                    <label class="control-label">
+                                      Namba ya simu
+                                    </label>
+                                    <input class="form-control pay-number" placeholder="Andika namba yako ya tigopesa" name="phone_number" type="text">
+                                    <small class="text-muted">
+                                      Namba ya malipo ya Tigo Pesa
+                                    </small>
+                                  </div>
                                 </div>
+                                <p>
+                                  Baada ya kubofya button ya ticket,
+                                  Utatumiwa maombi ya kukamilisha malipo kwa simu yako ya Tigo Pesa
+                                </p>
                               </div>
-                              <p>
-                                Baada ya kubofya button ya ticket,
-                                Utatumiwa maombi ya kukamilisha malipo kwa simu yako ya Tigo Pesa
-                              </p>
                             </div>
-                          </div>
-                          <hr>
-                          <div class="form-group">
-                            <div class="checkbox">
-                              <label class="text-black text-regular small">
-                                <input name="confirm" type="checkbox" value="1">Nimesoma na kukubaliana na
-                                <a href="https://shabiby.co.tz/pages/terms-of-service" target="_blank"> Masharti
-                                  ya Huduma </a> na <a target="_blank" href="https://shabiby.co.tz/pages/privacy">Sera
-                                  ya Faragha</a>
-                              </label>
+                            <hr>
+                            <div class="form-group">
+                              <div class="checkbox">
+                                <label class="text-black text-regular small">
+                                  <input name="confirm" type="checkbox" value="1">Nimesoma na kukubaliana na
+                                  <a href="https://shabiby.co.tz/pages/terms-of-service" target="_blank"> Masharti
+                                    ya Huduma </a> na <a target="_blank" href="https://shabiby.co.tz/pages/privacy">Sera
+                                    ya Faragha</a>
+                                </label>
+                              </div>
                             </div>
-                          </div>
-                        </fieldset>
+                            <div class="panel-footer bg-white">
+
+                              <a onclick="prevTab('customer')" aria-expanded="false"  class="btn">
+                                <small><i class="icon-arrow-left12">Nyuma</i></small>
+                              </a>
+
+
+                              <button id="submitBtn" type="submit" data-submitted="0" data-processing-text="<small class='fa fa-spinner fa-pulse'></small>&nbsp;Inashughulikia ombi .. " class="btn btn-sm pull-right btn-warning">
+                                Thibitisha Taarifa
+                              </button>
+
+                            </div>
+                          </fieldset>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                <div class="panel-footer bg-white">
-                  <ul class="pager wizard">
-                    <li class="previous first disabled" style="display:none;"><a class="btn  default" href="javascript:;">
-                        <small>Mwanzo <i class="icon-arrow-right13"></i></small>
-                      </a>
-                    </li>
-                    <li class="previous disabled"><a href="javascript:;" class="btn default">
-                        <small><i class="icon-arrow-left12"></i>Nyuma</small>
-                      </a>
-                    </li>
-                    <li class="last" style="display:none;"><a class="btn red" href="javascript:;">Mwisho</a></li>
-                    <li class="next"><a class="btn  grayish" href="javascript:;">
-                        <small>Hatua Ifuatayo <i class="icon-arrow-right13"></i></small>
-                      </a></li>
-                    <li class="finish hidden">
-                      <button type="submit" data-submitted="0" data-processing-text="<small class='fa fa-spinner fa-pulse'></small>&nbsp;Inashughulikia ombi .. " class="btn btn-sm pull-right primary">
-                        Thibitisha Taarifa
 
-                      </button>
-                    </li>
-                  </ul>
                 </div>
-              </div>
+            </div>
 
             </form>
 
             <!-- </div> -->
-          </div>
 
 
-          <!-- contact section -->
 
-          <div class="col-lg-4 ml-auto" data-aos="fade-up" data-aos-delay="200">
-            <div class="bg-white p-3 p-md-5">
+            <!-- contact section -->
 
-              <h3 class="text-black mb-4">Contact Info</h3>
-              <ul class="list-unstyled footer-link"><?php
-                                                    $query = mysqli_query($con, "select * from tblpage where PageType='contactus'");
-                                                    while ($row = mysqli_fetch_array($query)) {
+            <div class="col-lg-4 ml-auto" data-aos="fade-up" data-aos-delay="100">
+              <div class="bg-white p-3 p-md-5">
 
-                                                    ?>
-                  <li class="d-block mb-3">
-                    <span class="d-block text-black">Address:</span>
-                    <span><?php echo $row['PageDescription']; ?></span>
-                  </li>
-                  <li class="d-block mb-3"><span class="d-block text-black">Phone:</span><span>+<?php echo htmlentities($row['MobileNumber']); ?></span></li>
-                  <li class="d-block mb-3"><span class="d-block text-black">Email:</span><span><?php echo htmlentities($row['Email']); ?></span></li>
-                <?php } ?>
-              </ul>
+                <h3 class="text-black mb-4">Contact Info</h3>
+                <ul class="list-unstyled footer-link"><?php
+                                                      $query = mysqli_query($con, "select * from tblpage where PageType='contactus'");
+                                                      while ($row = mysqli_fetch_array($query)) {
+
+                                                      ?>
+                    <li class="d-block mb-3">
+                      <span class="d-block text-black">Address:</span>
+                      <span><?php echo $row['PageDescription']; ?></span>
+                    </li>
+                    <li class="d-block mb-3"><span class="d-block text-black">Phone:</span><span>+<?php echo htmlentities($row['MobileNumber']); ?></span></li>
+                    <li class="d-block mb-3"><span class="d-block text-black">Email:</span><span><?php echo htmlentities($row['Email']); ?></span></li>
+                  <?php } ?>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
@@ -532,40 +543,112 @@ if (isset($_POST['submit'])) {
   <!-- <script src="mickey.js"></script> -->
   <script src="../js/main.js"></script>
   <script>
+    function nextTab(tabId){
+      document.getElementById(tabId).classList.add('active');
+      document.querySelector('[href="#${tabId}"]').setAttribute('aria-expanded', 'true');
+      document.querySelector('[href="#${tabId}"]').setAttribute('aria-selected', 'true');
 
-document.addEventListener('DOMContentLoaded', function(){
-  const takenSeats = <?php echo $takenSeatsJSON ?>;
-  const bookedSeats = <?php echo $bookedSeatsJSON ?>;
+      document.querySelector('#seat').classList.remove('active');
+      document.querySelector('[href="#seat"]').setAttribute('aria-expanded', 'false');
+      document.querySelector('[href="#seat"]').setAttribute('aria-selected', 'false');
 
-  const seats = document.querySelectorAll('.seatCharts-seat');
-  
-  seats.forEach(seat=>{
-    if(takenSeats.includes(seat)){
-      seat.classList.add('unavailable');
-    } else if(bookedSeats.includes(seat)){
-      seat.classList.add('selected');
-      seat.style.pointerEvents = "none";
-    }else{
-      seat.classList.add('available');
     }
-    seat.addEventListener('click', function(){
-      if(this.classList.contains('available')){
-        this.classList.remove('available');
-        this.classList.add('selected');
+    function prevTab(tabId){
+      document.getElementById(tabId).classList.add('active');
+      document.querySelector('[href="#${tabId}"]').setAttribute('aria-expanded', 'true');
+      document.querySelector('[href="#${tabId}"]').setAttribute('aria-selected', 'true');
 
-        console.log('Selected seat:', this.dataset.seat);
-      }else if (this.classList.contains('selected')){
-        this.classList.remove('selected');
-        this.classList.add('available');
-        
-        
-        console.log('Deselected seat:', this.id);
+      document.querySelector('#confirm').classList.remove('active');
+      document.querySelector('[href="#confirm"]').setAttribute('aria-expanded', 'false');
+      document.querySelector('[href="#confirm"]').setAttribute('aria-selected', 'false');
+
+    }
+
+
+    var selectedSeats = [];
+
+    function updateSelectedSeats() {
+      var selectedSeatsList = document.getElementById("selectedSeats");
+      selectedSeatsList.innerHTML = "";
+
+      selectedSeats.forEach(function(seatID) {
+        var listItem = document.createElement("li");
+        listItem.textContent = "Seat " + seatID;
+        selectedSeatsList.appendChild(listItem);
+      });
+    }
+
+    function handleSeatSelection(event) {
+      var seatID = event.target.id;
+
+      var seatIndex = selectedSeats.indexOf(seatID);
+      if (seatIndex === -1) {
+        selectedSeats.push(seatID);
+      } else {
+        selectedSeats.splice(seatIndex, 1);
       }
-    });
-  });
-});
-  </script>
 
+      updateSelectedSeats();
+    }
+
+    updateSelectedSeats();
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const takenSeats = <?php echo $takenSeatsJSON ?>;
+      const bookedSeats = <?php echo $bookedSeatsJSON ?>;
+
+      const seats = document.querySelectorAll('.seatCharts-seat');
+
+      seats.forEach(seat => {
+        if (takenSeats.includes(seat)) {
+          seat.classList.add('unavailable');
+        } else if (bookedSeats.includes(seat)) {
+          seat.classList.add('selected');
+          seat.style.pointerEvents = "none";
+        } else {
+          seat.classList.add('available');
+        }
+        seat.addEventListener('click', function() {
+          if (this.classList.contains('available')) {
+            this.classList.remove('available');
+            this.classList.add('selected');
+
+            var seatIndex = selectedSeats.indexOf(this.id);
+            if (seatIndex === -1) {
+              selectedSeats.push(this.id);
+            } else {
+              selectedSeats.splice(seatIndex, 1);
+            }
+            updateSelectedSeats();
+
+            console.log('Selected seat:', this.id);
+          } else if (this.classList.contains('selected')) {
+            this.classList.remove('selected');
+            this.classList.add('available');
+
+            var seatIndex = selectedSeats.indexOf(this.id);
+            if (seatIndex === -1) {
+              selectedSeats.push(this.id);
+            } else {
+              selectedSeats.splice(seatIndex, 1);
+            }
+            updateSelectedSeats();
+
+            console.log('Deselected seat:', this.id);
+          }
+        });
+      });
+    });
+  </script>
+  <!-- <script>
+
+    var seatElements = document.querySelectorAll(".seat");
+    seatElements.forEach(function(seat){
+      seat.addEventListener('click', handleSeatSelection);
+    });
+
+   
+  </script> -->
 
 
 </body>
