@@ -544,24 +544,46 @@ $bookedSeatsJSON = json_encode($bookedSeats);
   <script src="../js/main.js"></script>
   <script>
     function nextTab(tabId){
-      document.getElementById(tabId).classList.add('active');
-      document.querySelector('[href="#${tabId}"]').setAttribute('aria-expanded', 'true');
-      document.querySelector('[href="#${tabId}"]').setAttribute('aria-selected', 'true');
+      const currentActiveTab = document.querySelector('.tab-pane.active');
+      currentActiveTab.classList.remove('active');
 
-      document.querySelector('#seat').classList.remove('active');
-      document.querySelector('[href="#seat"]').setAttribute('aria-expanded', 'false');
-      document.querySelector('[href="#seat"]').setAttribute('aria-selected', 'false');
+      const nextTab = document.getElementById(tabId);
+      nextTab.classList.add('active');
 
+      const currentTabNavLink = document.querySelector('.nav-link.active[href="#${currentActiveTab.id}"]');
+      const nextTabNavLink = document.querySelector('.nav-link[href="#${tabId}"]');
+
+      currentTabNavLink.classList.remove('active');
+      currentTabNavLink.setAttribute('aria-selected', 'false');
+
+      nextTabNavLink.classList.add('active');
+      nextTabNavLink.setAttribute('aria-selected', 'true');
     }
+    // function prevTab(tabId){
+    //   document.getElementById(tabId).classList.add('active');
+    //   document.querySelector('[href="#${tabId}"]').setAttribute('aria-expanded', 'true');
+    //   document.querySelector('[href="#${tabId}"]').setAttribute('aria-selected', 'true');
+
+    //   document.querySelector('#confirm').classList.remove('active');
+    //   document.querySelector('[href="#confirm"]').setAttribute('aria-expanded', 'false');
+    //   document.querySelector('[href="#confirm"]').setAttribute('aria-selected', 'false');
+
+    // }
     function prevTab(tabId){
-      document.getElementById(tabId).classList.add('active');
-      document.querySelector('[href="#${tabId}"]').setAttribute('aria-expanded', 'true');
-      document.querySelector('[href="#${tabId}"]').setAttribute('aria-selected', 'true');
+      const currentActiveTab = document.querySelector('.tab-pane.active');
+      currentActiveTab.classList.remove('active');
 
-      document.querySelector('#confirm').classList.remove('active');
-      document.querySelector('[href="#confirm"]').setAttribute('aria-expanded', 'false');
-      document.querySelector('[href="#confirm"]').setAttribute('aria-selected', 'false');
+      const prevTab = document.getElementById(tabId);
+      prevTab.classList.add('active');
 
+      const currentTabNavLink = document.querySelector('.nav-link.active[href="#${currentActiveTab.id}"]');
+      const prevTabNavLink = document.querySelector('.nav-link[href="#${tabId}"]');
+
+      currentTabNavLink.classList.remove('active');
+      currentTabNavLink.setAttribute('aria-selected', 'false');
+
+      prevTabNavLink.classList.add('active');
+      prevTabNavLink.setAttribute('aria-selected', 'true');
     }
 
 
