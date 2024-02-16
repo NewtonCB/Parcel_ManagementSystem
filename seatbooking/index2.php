@@ -74,7 +74,7 @@ $bookedSeatsJSON = json_encode($bookedSeats);
     </div>
 
 
-    <?php include_once('includes/header.php'); ?>
+    <?php include_once('./includes/header.php'); ?>
 
     <div class="site-section bg-light" id="contact-section">
       <div class="container pt-0">
@@ -87,7 +87,7 @@ $bookedSeatsJSON = json_encode($bookedSeats);
         </div>
         <div class="container">
           <div class="row">
-            <div class="col-lg-7 mb-5" data-aos="fade-up" data-aos-delay="100">
+            <div class="col-lg-7 mb-5" data-aos="fade-up" data-aos-delay="100" id="booking-step">
               <!-- <div class="card p-3 shadow-sm"> -->
 
               <form method="POST" action="" accept-charset="UTF-8" id="booking-form" novalidate="novalidate"><input name="_token" type="hidden" value="8hwR8o5UYEW0OCATrp2PQPVTaL6qnbSxWS9CkMDl">
@@ -258,6 +258,7 @@ $bookedSeatsJSON = json_encode($bookedSeats);
                                       <p class="text-bold-500 small mb-5 ">
                                         Kiti kilichochaguliwa: </p>
                                       <ul id="selectedSeats"></ul>
+                                     
 
                                       <div class="form-group mb-10">
                                         <input name="seat" type="hidden" value="C1">
@@ -288,7 +289,9 @@ $bookedSeatsJSON = json_encode($bookedSeats);
                                 <small><i class="icon-arrow-left12"></i></small>
                               </a>
 
-                              <a class="btn btn-secondary" onclick="nextTab('customer')">
+                              <div class="text-danger" id="noSelectedSeats"></div>
+
+                              <a class="btn btn-secondary text-white" onclick="nextTab('customer')">
                                 <small>Hatua Ifuatayo <i class="icon-arrow-right13"></i></small>
                               </a>
 
@@ -346,14 +349,13 @@ $bookedSeatsJSON = json_encode($bookedSeats);
 
                             <div class="panel-footer bg-white">
 
-                              <a onclick="prevTab('seat')"  class="btn grayish">
+                              <a onclick="prevTab('seat')" class="btn grayish">
                                 <small><i class="icon-arrow-left12">Nyuma</i></small>
                               </a>
 
-                              <a onclick="nextTab('confirm')" class="btn btn-secondary">
-                                <small>Hatua Ifuatayo <i class="icon-arrow-right13"></i></small>
-                              </a>
-
+                              <button onclick="confirm()"   class="btn btn-sm pull-right btn-warning">
+                                Thibitisha Taarifa
+                              </button>
                             </div>
 
                           </fieldset>
@@ -368,7 +370,7 @@ $bookedSeatsJSON = json_encode($bookedSeats);
                             </legend>
                             <div class="alert small alert-grayish">
                               <span>
-                                <b>Muhimu:</b> Utakuwa na dakika 20 ili kukamilisha malipo ya tiketi, kushindwa kufanya hivyo kutasababisha kufuta moja kwa moja taarifa za tiketi yako
+                                <b>Muhimu:</b> Utakuwa na lisaa (1 hr) ili kukamilisha malipo ya tiketi, kushindwa kufanya hivyo kutasababisha kufuta moja kwa moja taarifa za tiketi yako
                               </span>
                             </div>
                             <div class="row">
@@ -377,16 +379,7 @@ $bookedSeatsJSON = json_encode($bookedSeats);
                                   29,000 /=
                                 </h6>
                               </div>
-                              <div class="col-sm-6">
-                                <div class="form-group">
-                                  <label class="control-label">
-                                    Namba ya punguzo
-                                  </label>
-                                  <input class="form-control" placeholder="Andika namba ya punguzo lako" name="discount" type="text">
-                                  <small class="text-muted">Kama una namba yoyote ya punguzo
-                                  </small>
-                                </div>
-                              </div>
+                              <br>
                             </div>
                           </fieldset>
 
@@ -395,13 +388,14 @@ $bookedSeatsJSON = json_encode($bookedSeats);
                             <legend class="no-padding-top text-muted">
                               <small class="text-black">Njia ya Malipo</small>
                               <br>
-                              <span style="text-transform: none"><i> Chagua njia ya malipo unayohitaji</i></span>
+                              <span style="text-transform: none"><i> Fuata maelekezo kukamilisha malipo ya siti ulio hifadhi</i></span>
                             </legend>
                             <div class="form-group text-center">
-                              <div class="radio">
-                                <label class="radio-inline" title="Pay with TigoPesa">
+                              <p></p>
+                              <!-- <div class="radio">
+                                <label class="radio-inline" title="Pay through bank">
                                   <input data-method="tigo-container" name="method" type="radio" value="1">
-                                  Tigo Pesa
+                                  Bank Card/ Account
                                   <br>
                                 </label>
                                 <label class="radio-inline" title="Pay with Vodacom Mpesa">
@@ -412,10 +406,10 @@ $bookedSeatsJSON = json_encode($bookedSeats);
 
                                 <label class="radio-inline" title="Pay with Vodacom Mpesa">
                                   <input name="method" type="radio" value="5">
-                                  Njia Nyingine
-                                </label>
+                                  Tigo Tigo-Pesa
+                                </label> 
 
-                              </div>
+                              </div>-->
                             </div>
 
                             <div class="row">
@@ -456,7 +450,7 @@ $bookedSeatsJSON = json_encode($bookedSeats);
                               </div>
                             </div>
                             <hr>
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                               <div class="checkbox">
                                 <label class="text-black text-regular small">
                                   <input name="confirm" type="checkbox" value="1">Nimesoma na kukubaliana na
@@ -465,17 +459,15 @@ $bookedSeatsJSON = json_encode($bookedSeats);
                                     ya Faragha</a>
                                 </label>
                               </div>
-                            </div>
+                            </div> -->
                             <div class="panel-footer bg-white">
 
-                              <a onclick="prevTab('customer')" aria-expanded="false"  class="btn">
+                              <a onclick="prevTab('customer')" aria-expanded="false" class="btn">
                                 <small><i class="icon-arrow-left12">Nyuma</i></small>
                               </a>
 
 
-                              <button id="submitBtn" type="submit" data-submitted="0" data-processing-text="<small class='fa fa-spinner fa-pulse'></small>&nbsp;Inashughulikia ombi .. " class="btn btn-sm pull-right btn-warning">
-                                Thibitisha Taarifa
-                              </button>
+                              
 
                             </div>
                           </fieldset>
@@ -543,8 +535,14 @@ $bookedSeatsJSON = json_encode($bookedSeats);
   <!-- <script src="mickey.js"></script> -->
   <script src="../js/main.js"></script>
   <script>
-    function nextTab(tabId){
+    function nextTab(tabId) {
       const currentActiveTab = document.querySelector('.tab-pane.active');
+      currentTabId = currentActiveTab.id
+      if (!validateTab(currentTabId)) {
+        console.log('if-validateTab');
+        return;
+      }
+      
       currentActiveTab.classList.remove('active');
 
       const nextTab = document.getElementById(tabId);
@@ -558,18 +556,74 @@ $bookedSeatsJSON = json_encode($bookedSeats);
 
       nextTabNavLink.classList.add('active');
       nextTabNavLink.setAttribute('aria-selected', 'true');
+      
     }
-    // function prevTab(tabId){
-    //   document.getElementById(tabId).classList.add('active');
-    //   document.querySelector('[href="#${tabId}"]').setAttribute('aria-expanded', 'true');
-    //   document.querySelector('[href="#${tabId}"]').setAttribute('aria-selected', 'true');
+    function confirm(){
+      
+      nextTab('confirm');
+      submitSilently();
+    }
 
-    //   document.querySelector('#confirm').classList.remove('active');
-    //   document.querySelector('[href="#confirm"]').setAttribute('aria-expanded', 'false');
-    //   document.querySelector('[href="#confirm"]').setAttribute('aria-selected', 'false');
+    function validateTab(tabId) {
 
-    // }
-    function prevTab(tabId){
+      let isValid = true;
+      let errorMessage = "";
+      const seatError = document.getElementById('noSelectedSeats');
+      const firstNameError = document.getElementById('fnerror');
+      const lastNameError = document.getElementById('lnerror');
+      const phoneError = document.getElementById('perror');
+      const emailError = document.getElementById('eerror');
+      const passportError = document.getElementById('pperror');
+      const yellowfeverError = document.getElementById('yferror');
+      console.log('validateTab');
+      if (tabId === 'seat') {
+
+        const selectedSeats = document.querySelectorAll('.selected');
+        console.log(selectedSeats.length);
+        if (selectedSeats.length === 1) {
+          
+          isValid = false;
+          errorMessage = 'Please select a seat.';
+          console.log('Please select');
+      const errorContainer = document.getElementById('noSelectedSeats');
+     
+        errorContainer.textContent = errorMessage;
+        errorContainer.style.display = 'block';
+      
+        }else{
+          seatError.textContent = '';
+        seatError.style.display = 'none';
+        }
+      }else if(tabId === 'customer'){
+
+        const firstname = document.querySelector('input[name="first_name"]').value.trim();
+        const lastname = document.querySelector('input[name="last_name"]').value.trim();
+        const phone = document.querySelector('input[name="phone"]').value.trim();
+        const email = document.querySelector('input[name="email"]').value.trim();
+
+        if(firstname === '' || lastname === '' || phone === '' || email === '') {
+          isValid =false;
+          errorMessage = 'Please fill in all required fields.';
+        }
+      }else if(tabId === 'confirm'){
+        const phone = document.querySelector('input[name="phone"]').value.trim();
+      }
+      console.log('You did everything right');
+      // const errorContainer = document.getElementById('${tabId}-error');
+      // if(!isValid){
+      //   errorContainer.textContent = errorMessage;
+      //   errorContainer.style.display = 'block';
+      // }else {
+      //   errorContainer.textContent = '';
+      //   errorContainer.style.display = 'none';
+      // }
+
+
+      return isValid;
+
+    }
+
+    function prevTab(tabId) {
       const currentActiveTab = document.querySelector('.tab-pane.active');
       currentActiveTab.classList.remove('active');
 
@@ -661,6 +715,19 @@ $bookedSeatsJSON = json_encode($bookedSeats);
         });
       });
     });
+    function submitSilently(){
+    const form = document.getElementById('booking-form');
+    const formData = new FormData(form);
+
+    fetch(form.action, {method: form.method, body:formData}).then(response =>{if(response.ok){
+      console.log('submitted');
+    }else{
+      console.log('not submitted');
+    }}).catch(error => {
+      console.error('the error is:', error);
+    });
+  }
+
   </script>
   <!-- <script>
 
@@ -671,6 +738,173 @@ $bookedSeatsJSON = json_encode($bookedSeats);
 
    
   </script> -->
+  <!--<script>
+    $(document).ready(function() {
+
+      jQuery.validator.addMethod("regex", function(value, element, regex) {
+
+        return regex.test(value);
+
+      }, "Nambari ya simu lazima iwe namba halali");
+
+      var bookForm = $('#booking-form').validate({
+        ignore: [],
+        rules: {
+          seat: {
+            required: true,
+          },
+          first_name: {
+            required: true,
+            lettersonly: true,
+          },
+          last_name: {
+            required: true,
+            lettersonly: true,
+          },
+          email: {
+            email: true,
+          },
+          phone: {
+            required: true,
+            regex: /^(\+?255|0|^){1}?([67|22]{1}[13456789|2]{1}[0-9]{1}|[6]{1}[57]{1}[2-9]{1}[0-9]{6}){1}?([0-9]{6})$/,
+          },
+          confirm: {
+            required: true,
+          }
+        },
+        messages: {
+          seat: "Tafadhali chagua kiti kuendelea",
+          email: {
+
+            email: "Tafadhali weka barua pepe halali"
+          },
+          first_name: {
+            required: 'Tafadhali weka jina lako la kwanza',
+            lettersonly: "Jina linaweza tu kuwa na maneno tu",
+          },
+          last_name: {
+            required: 'Tafadhali weka jina lako la mwisho',
+            lettersonly: "Jina linaweza tu kuwa na maneno tu",
+          },
+          phone: {
+            required: "Tafadhali weka namba yako ya simu",
+          },
+          confirm: {
+            required: "Lazima ukubaliana na masharti yetu"
+          }
+        },
+        focusInvalid: true,
+        focusCleanup: true,
+        errorElement: "small",
+        errorClass: "text-danger",
+        errorPlacement: function(error, element) {
+          error.appendTo(element.parents(".form-group").addClass('has-error'));
+        }
+      });
+
+      var customer = $("#customer");
+
+      var wizard = $('#booking-step');
+
+      var confirm = $("#confirm");
+
+      var schedule = $("#seat");
+
+      $(wizard).bootstrapWizard({
+        tabClass: 'nav nav-tabs',
+        onNext: function(tab, navigation, index) {
+
+          var noErrors = true;
+
+          cleanErrors(tab);
+
+          if (index == 1) {
+
+            var seat = $(schedule).find("input[name=seat]");
+
+            if (!bookForm.element(seat)) {
+
+              noErrors = false;
+            }
+          }
+
+          if (index == 2) {
+
+            $(customer).find('input').each(function(key, field) {
+
+              if (!bookForm.element(field)) {
+
+                noErrors = false;
+              }
+
+            });
+          }
+
+          return noErrors;
+        },
+
+        onTabShow: function(tab, navigation, index) {
+
+          cleanErrors(tab);
+
+          return false;
+        },
+        onTabClick: function(tab, navigation, index) {
+
+          return false;
+
+        },
+
+        onFinish: function(tab, navigation, index) {
+
+          var noErrors = true;
+
+          $(confirm).find('input').each(function(key, field) {
+
+            if (!bookForm.element(field)) {
+
+              noErrors = false;
+            }
+
+          });
+
+          if (!bookForm.element($(schedule).find("input[name=seat]"))) {
+
+            toastr['error']('Sorry your selected seat has just been booked, please pick another seat to continue', 'Selected seat not available');
+
+            return false;
+          }
+
+          if (noErrors) {
+
+            var submitButton = $('form button[type=submit]');
+
+            if (submitButton.data('submitted') === 0) {
+
+              $('form#booking-form').submit();
+
+              submitButton.data('submitted', 1);
+
+            } else if (submitButton.data('submitted') === 1) {
+
+              //toastr['info']('Your booking is being processed..', 'Please wait');
+            }
+          }
+        },
+        onTabChange: function(tab, navigation, index) {
+
+        }
+
+      });
+
+      function cleanErrors(tab) {
+
+        $(tab).find('small.text-danger').remove();
+        $(tab).find('.form-group').removeClass('has-error');
+      }
+
+    });
+  </script>-->
 
 
 </body>

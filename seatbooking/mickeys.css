@@ -143,6 +143,10 @@ small {
     background-image: url(img/bus-seatred2.png);
     color: white;
   }
+  div.seatCharts-seat.focused, div.seatCharts-seat.selected-default {
+    background-image: url(img/bus-seatred2.png);
+    color: white;
+  }
   div.seatCharts-seat.unavailable {
     background-image: url(img/bus-seatgreen2.png);
     cursor: not-allowed;
@@ -161,7 +165,7 @@ small {
     background-repeat: no-repeat;
     background-size: 140%; 
   }
-  div.seatCharts-cell.forShow.selected{
+  div.seatCharts-cell.forShow.selected-default{
     background-image: url(img/bus-seatred2.png);
     color: white;
   }
