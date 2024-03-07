@@ -23,8 +23,6 @@ while ($row = mysqli_fetch_assoc($result)) {
 }
 $takenSeatsJSON = json_encode($takenSeats);
 $bookedSeatsJSON = json_encode($bookedSeats);
-echo $bookedSeatsJSON;
-
 ?>
 
 
