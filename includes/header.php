@@ -33,7 +33,7 @@ while ($row=mysqli_fetch_array($query)) {
 
 
             <div class="site-logo">
-              <a href="index.php" class="text-black"><span class="text-primary">Mkombe Luxury Bus </a>
+              <a href="index.php" class="text-black"><span class="text-primary">Mkombe Luxury </a>
             </div>
 
             <div class="col-12">
@@ -41,14 +41,9 @@ while ($row=mysqli_fetch_array($query)) {
 
                 <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
                   <li><a href="index.php" class="nav-link">Home</a></li>
-                   <li class="has-children">
-                    <a href="#about-section" class="nav-link">Ticket & Parcel</a>
-                    <ul class="dropdown arrow-top">
-                      <li><a href="seatbooking/index2.php" class="nav-link">Book Seat</a></li>
+                    <li><a href="seatbooking/index2.php" class="nav-link">Book Seat</a></li>
                       <li><a href="track-complain.php" class="nav-link">Track Parcel</a></li>
-                      
-                    </ul>
-                  </li>
+              
                  <li><a href="#about-section" class="nav-link">About </a></li>
 <li><a href="#branch-section" class="nav-link">Branch</a></li>
  <li><a href="#contact-section" class="nav-link">Contact</a></li>

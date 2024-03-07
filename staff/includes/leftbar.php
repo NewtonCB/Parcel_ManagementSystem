@@ -1,56 +1,68 @@
  <!-- ========== Left Sidebar Start ========== -->
-            <div class="left side-menu">
-                <div class="sidebar-inner slimscrollleft">
+ <div class="left side-menu">
+     <div class="sidebar-inner slimscrollleft">
 
-                    <!--- Sidemenu -->
-                    <div id="sidebar-menu">
-                        <ul>
-                            
+         <!--- Sidemenu -->
+         <div id="sidebar-menu">
+             <ul>
 
-                            <li class="has_sub">
-                                <a href="dashboard.php" class="waves-effect"><span class="badge badge-pill badge-primary float-right"></span><i class="zmdi zmdi-view-dashboard"></i><span> Dashboard </span> </a>
-                            </li>
 
-                           
-                            <li class="has_sub">
-                                <a href="add-courierdetail.php" class="waves-effect"><span class="badge badge-pill badge-primary float-right"></span><i class="zmdi zmdi-shopping-basket"></i>
-                           <span> Add Parcel/Cargo </span> </a>
-                            </li>
+                 <li class="has_sub">
+                     <a href="dashboard.php" class="waves-effect"><span class="badge badge-pill badge-primary float-right"></span><i class="zmdi zmdi-view-dashboard"></i><span> Dashboard </span> </a>
+                 </li>
+                 <li class="has_sub">
+                     <a href="seatconfirm.php" class="waves-effect"><span class="badge badge-pill badge-primary float-right"></span><i class="zmdi zmdi-view-dashboard"></i><span> Confirm Seats</span> </a>
+                 </li>
 
-                            <li class="has_sub">
-                                <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-album"></i> <span> Status</span> <span class="menu-arrow"></span></a>
-                                <ul class="list-unstyled">
-                                    <li><a href="courier.php">New Parcel/Cargo</a></li>
-                                    <li><a href="courierpickup.php">Parcel/Cargo Pickup</a></li>
-                                    <li><a href="shipped.php">Transported</a></li>
-                                    <li><a href="intransit.php">Intransit</a></li>
-                                     <li><a href="arriveddes.php">Arrived at Destination</a></li>
-                                      <li><a href="outfordelivery.php">Out for Delivery</a></li>
-                                      <li><a href="delivered.php">Delivered</a></li>
-                                                                    </ul>
-                            </li>
+                 <li class="has_sub">
+                     <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-album"></i> <span>Seat Book Status</span> <span class="menu-arrow"></span></a>
+                     <ul class="list-unstyled">
+                         <li><a href="seatfree.php">Available Seats</a></li>
+                         <li><a href="seatbooked.php">Booked Seats</a></li>
+                         <li><a href="seattaken.php">Confirmed Seats</a></li>
+                     </ul>
+                 </li>
 
-                            
-                            <li class="has_sub">
-                                <a href="search-courier.php" class="waves-effect"><span class="badge badge-pill badge-primary float-right"></span><i class="zmdi zmdi-search-for"></i><span> Search Parcel/Cargo </span> </a>
-                            </li>
-                                              
 
-                            
+                 <li class="has_sub">
+                     <a href="add-courierdetail.php" class="waves-effect"><span class="badge badge-pill badge-primary float-right"></span><i class="zmdi zmdi-shopping-basket"></i>
+                         <span> Add Parcel/Cargo </span> </a>
+                 </li>
 
-                           
+                 <li class="has_sub">
+                     <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-album"></i> <span>Parcel Status</span> <span class="menu-arrow"></span></a>
+                     <ul class="list-unstyled">
+                         <li><a href="courier.php">New Parcel/Cargo</a></li>
+                         <li><a href="courierpickup.php">Parcel/Cargo Pickup</a></li>
+                         <li><a href="shipped.php">Transported</a></li>
+                         <li><a href="intransit.php">Intransit</a></li>
+                         <li><a href="arriveddes.php">Arrived at Destination</a></li>
+                         <li><a href="outfordelivery.php">Out for Delivery</a></li>
+                         <li><a href="delivered.php">Delivered</a></li>
+                     </ul>
+                 </li>
 
-                            
-                           
 
-                          
+                 <li class="has_sub">
+                     <a href="search-courier.php" class="waves-effect"><span class="badge badge-pill badge-primary float-right"></span><i class="zmdi zmdi-search-for"></i><span> Search Parcel/Cargo </span> </a>
+                 </li>
 
-                        </ul>
-                        <div class="clearfix"></div>
-                    </div>
-                    <!-- Sidebar -->
-                    <div class="clearfix"></div>
 
-                </div>
 
-            </div>
+
+
+
+
+
+
+
+
+             </ul>
+             <div class="clearfix"></div>
+         </div>
+         <!-- Sidebar -->
+         <div class="clearfix"></div>
+
+     </div>
+
+ </div>
